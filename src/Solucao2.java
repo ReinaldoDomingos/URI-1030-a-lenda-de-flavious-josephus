@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
+public class Solucao2 {
     /**
      * Metodo principal a qual executara o código
      * - Será feita a leitura de quantos casos de testes executados
@@ -26,15 +26,13 @@ public class Main {
             No ptr = circular.head;
             int pos = 0, t = circular.length, aux = 0;
             while (circular.length > 1) {
-                if (pos % k == 0 && pos > 0) {
-                    int key = (int) ptr.getKey();
-                    circular.remover(key);
-                }
-                ptr = ptr.getNext();
-                if (ptr.getKey() == null)
+                for (int l = 0; l < k; l++) {
                     ptr = ptr.getNext();
-                pos++;
-                aux++;
+                    if (ptr.getKey() == null)
+                        ptr = ptr.getNext();
+                }
+                int key = (int) ptr.getKey();
+                circular.remover(key);
             }
             res.add("Case " + (i + 1) + ": " + circular.head.getNext());
             circular = new ListaCircular<>();
