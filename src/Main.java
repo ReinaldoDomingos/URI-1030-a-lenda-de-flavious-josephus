@@ -45,7 +45,7 @@ public class Main {
     }
 
     /**
-     * @param <T> Tipo que o objeto No armazenará
+     * @param <T> Tipo que do objeto No armazenará
      *            No representa  um item de uma lista encadeada a qual possui uma chave (key)
      *            e um ponteiro para o proximo item (next)
      */
@@ -53,46 +53,89 @@ public class Main {
         private T key;
         private No next;
 
+        /**
+         * Construtor da classe
+         *
+         * @param key -  valor/chave que o No contem
+         */
         public No(T key) {
             this.key = key;
             this.next = null;
         }
 
+        /**
+         * @return Retorna valor/chave que o No contem
+         */
         public T getKey() {
             return key;
         }
 
+        /**
+         * Coloca o valor key no atributo key
+         *
+         * @param key - valor/chave que o No contem
+         */
         public void setKey(T key) {
             this.key = key;
         }
 
+        /**
+         * @return - Retorna o ponteiro para o Proximo No
+         */
         public No getNext() {
             return next;
         }
 
+        /**
+         * Coloca o valor next para o atributo next
+         *
+         * @param next - Ponteiro para o Proximo No
+         */
         public void setNext(No next) {
             this.next = next;
         }
 
+        /**
+         * Formata a impressão padrão para o No
+         *
+         * @return - Retorna String contendo o valor da key
+         */
         @Override
         public String toString() {
             return String.valueOf(key);
         }
     }
 
+    /**
+     * @param <T> Tipo que o objeto da ListaCircular armazenará
+     */
     static class ListaCircular<T extends Comparable<T>> {
 
         No<T> head = new No<>(null);
         int length = 0;
 
+        /**
+         * Construtor da classe Lista Circular
+         */
         public ListaCircular() {
             head.setNext(head);
         }
 
+        /**
+         * Verifica se um No esta vazio
+         *
+         * @param ptr - Um Objeto do tipo No
+         * @return - Retorna um booolean
+         */
         private boolean isNull(No<T> ptr) {
             return (ptr == null);
         }
 
+        /**
+         * Insere o valor em um novo No e adiciona na lista
+         *
+         * @param valor - valor a ser atribuido ao novo No
+         */
         public void inserir(T valor) {
             head.setKey(valor);
             No<T> novo = new No<>(valor);
@@ -111,6 +154,12 @@ public class Main {
             }
         }
 
+        /**
+         * Busca um No com um valor valor e retorna o No anterior ao encontrado com o valor
+         *
+         * @param valor - Valor do No a ser buscado
+         * @return - Retorna No anterior ao encontrado
+         */
         private No buscaAnterior(T valor) {
             No<T> ant = head;
             No<T> ptr = this.head.getNext();
@@ -121,6 +170,12 @@ public class Main {
             return ant;
         }
 
+        /**
+         * Remove um No com o valor valor da lista caso encontre
+         *
+         * @param valor - Valor do No a ser removido
+         * @return - Retorna o No removido
+         */
         public No<T> remover(T valor) {
             No<T> antRemovido = buscaAnterior(valor);
             No<T> noRemovido = null;
@@ -141,6 +196,9 @@ public class Main {
             return noRemovido;
         }
 
+        /**
+         * Imprime os No que contem a lista
+         */
         public void imprimeIterativo() {
             No<T> ptr = this.head.getNext();
             while (ptr != head) {
