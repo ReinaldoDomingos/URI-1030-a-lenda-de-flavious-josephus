@@ -1,0 +1,3 @@
+git add .
+git commit -a -m "Erro de 5% apenas no URI"
+git push -u origin master

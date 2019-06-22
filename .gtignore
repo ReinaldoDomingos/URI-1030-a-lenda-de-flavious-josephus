@@ -1,5 +1,7 @@
-.idea
+.idea/
 out/
 push
 URI-1340-Eu-Posso-Adivinhar-a-Estrutura-de-Dados.iml
 *.class
+.vscode/
+URI-1030-a-lenda-de-flavious-josephus.iml
